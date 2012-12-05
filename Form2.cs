@@ -19,7 +19,7 @@ namespace Jukaela_Social
     {
         public HttpWebRequest request;
         public CookieContainer cookies;
-        public JsonArray tempObject;
+        public JsonArray feed;
         public String userID;
 
         private BindingSource bindingSource1 = new BindingSource();
@@ -44,9 +44,12 @@ namespace Jukaela_Social
             request.AllowAutoRedirect = true;
             request.CookieContainer = cookies;
 
-            string postData = String.Format("{{\"first\" : \"{0}\", \"last\" : \"{1}\"}}", "0", "20");
+            JsonObject tempObject = new JsonObject();
 
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            tempObject.Add(new KeyValuePair<string, JsonValue>("first", (JsonValue)"0"));
+            tempObject.Add(new KeyValuePair<string, JsonValue>("last", (JsonValue)"20"));
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(tempObject.ToString());
 
             request.ContentType = "application/json";
             request.ContentLength = byteArray.Length;
@@ -65,7 +68,7 @@ namespace Jukaela_Social
 
             if (responseFromServer != null)
             {
-                tempObject = (JsonArray)JsonValue.Parse(responseFromServer);
+                feed = (JsonArray)JsonValue.Parse(responseFromServer);
 
                 if (bindingSource1.Count > 0)
                 {
@@ -73,7 +76,7 @@ namespace Jukaela_Social
 
                     bindingSource1 = new BindingSource();
                 }
-                foreach (var post in tempObject)
+                foreach (var post in feed)
                 {
                     Post tempPost = new Post((string)post["content"], (string)post["name"], (string)post["username"]);
 
@@ -130,9 +133,12 @@ namespace Jukaela_Social
             request.AllowAutoRedirect = true;
             request.CookieContainer = cookies;
 
-            string postData = String.Format("{{\"content\":\"{0}\",\"user_id\":{1}}}", postTextBox.Text, userID);
+            JsonObject tempObject = new JsonObject();
 
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            tempObject.Add(new KeyValuePair<string, JsonValue>("content", (JsonValue)postTextBox.Text));
+            tempObject.Add(new KeyValuePair<string, JsonValue>("user_id", (JsonValue)userID));
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(tempObject.ToString());
 
             request.ContentType = "application/json";
             request.ContentLength = byteArray.Length;
@@ -159,6 +165,7 @@ namespace Jukaela_Social
             }
         }
     }
+
     public class Post
     {
         public string content;

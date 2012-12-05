@@ -36,10 +36,17 @@ namespace Jukaela_Social
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://cold-planet-7717.herokuapp.com/sessions.json");
             request.Method = "POST";
             request.CookieContainer = new CookieContainer();
-            
-            string postData = String.Format("{{ \"session\": {{\"email\" : \"{0}\", \"password\" : \"{1}\", \"apns\": \"\"}}}}", usernameTextBox.Text, passwordTextBox.Text);
 
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            JsonObject sessionObject = new JsonObject();
+            JsonObject infoObject = new JsonObject();
+
+            infoObject.Add(new KeyValuePair<string, JsonValue>("email", usernameTextBox.Text));
+            infoObject.Add(new KeyValuePair<string, JsonValue>("password", passwordTextBox.Text));
+            infoObject.Add(new KeyValuePair<string, JsonValue>("apns", ""));
+
+            sessionObject.Add(new KeyValuePair<string, JsonValue>("session", infoObject));
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(sessionObject.ToString());
 
             request.ContentType = "application/json";
             request.ContentLength = byteArray.Length;
@@ -58,7 +65,7 @@ namespace Jukaela_Social
 
             if (responseFromServer != null)
             {
-                JsonObject tempObject = (JsonObject)JsonValue.Parse(responseFromServer);
+                JsonObject responseObject = (JsonObject)JsonValue.Parse(responseFromServer);
 
                 Form2 feed = new Form2();
 
@@ -66,7 +73,7 @@ namespace Jukaela_Social
 
                 feed.request = request;
                 feed.cookies = request.CookieContainer;
-                feed.userID = (string)tempObject["id"];
+                feed.userID = (string)responseObject["id"];
 
                 feed.Show();
                 feed.FormClosed += new FormClosedEventHandler(feedClosed);
