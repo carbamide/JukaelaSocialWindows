@@ -109,6 +109,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(320, 505);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
             this.Name = "Form2";
             this.Text = "Feed";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

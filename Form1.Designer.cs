@@ -107,6 +107,7 @@
             this.Controls.Add(this.loginCheckbox);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.loginButton);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Login";
             this.ResumeLayout(false);

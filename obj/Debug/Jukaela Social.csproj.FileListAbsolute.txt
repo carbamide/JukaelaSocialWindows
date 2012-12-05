@@ -11,3 +11,7 @@
 \\psf\home\documents\visual studio 2012\Projects\Jukaela Social\Jukaela Social\bin\Debug\Microsoft.Json.xml
 \\psf\home\documents\visual studio 2012\Projects\Jukaela Social\Jukaela Social\obj\Debug\Jukaela Social.csprojResolveAssemblyReference.cache
 \\psf\home\documents\visual studio 2012\Projects\Jukaela Social\Jukaela Social\obj\Debug\Jukaela_Social.Form2.resources
+\\psf\Home\Documents\Visual Studio 2012\Projects\Jukaela Social\Jukaela Social\bin\Debug\Jukaela Social.exe.manifest
+\\psf\Home\Documents\Visual Studio 2012\Projects\Jukaela Social\Jukaela Social\bin\Debug\Jukaela Social.application
+\\psf\Home\Documents\Visual Studio 2012\Projects\Jukaela Social\Jukaela Social\obj\Debug\Jukaela Social.exe.manifest
+\\psf\Home\Documents\Visual Studio 2012\Projects\Jukaela Social\Jukaela Social\obj\Debug\Jukaela Social.application
