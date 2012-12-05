@@ -76,9 +76,8 @@ namespace Jukaela_Social
                 feed.userID = (string)responseObject["id"];
 
                 feed.Show();
-                feed.FormClosed += new FormClosedEventHandler(feedClosed);
 
-                this.WindowState = FormWindowState.Minimized;
+                this.Hide();
             }
 
             reader.Close();
@@ -96,12 +95,6 @@ namespace Jukaela_Social
 
                 Properties.Settings.Default.Save();
             }
-        }
-        void feedClosed(object sender, FormClosedEventArgs e)
-        {
-            Form1 login = new Form1();
-
-            login.Show();
         }
     }
 }

@@ -15,3 +15,4 @@
 \\psf\Home\Documents\Visual Studio 2012\Projects\Jukaela Social\Jukaela Social\bin\Debug\Jukaela Social.application
 \\psf\Home\Documents\Visual Studio 2012\Projects\Jukaela Social\Jukaela Social\obj\Debug\Jukaela Social.exe.manifest
 \\psf\Home\Documents\Visual Studio 2012\Projects\Jukaela Social\Jukaela Social\obj\Debug\Jukaela Social.application
+\\psf\Home\Documents\Visual Studio 2012\Projects\Jukaela Social\Jukaela Social\obj\Debug\Jukaela_Social.AboutBox1.resources

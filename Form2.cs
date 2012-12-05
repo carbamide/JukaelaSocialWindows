@@ -37,6 +37,17 @@ namespace Jukaela_Social
             getFeed();
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.R))
+            {
+                getFeed();
+
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void getFeed ()
         {
             request = (HttpWebRequest)WebRequest.Create("http://cold-planet-7717.herokuapp.com/home.json");
@@ -162,6 +173,40 @@ namespace Jukaela_Social
                 postTextBox.Text = null;
 
                 getFeed();
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Unimplemented item", null);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 box = new AboutBox1();
+            box.ShowDialog();
+
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("Are you sure?", "Sure?", MessageBoxButtons.YesNo);
+
+            if (r.ToString() == "Yes")
+            {
+                Properties.Settings.Default.AutoLogin = false;
+                Properties.Settings.Default.Save();
+
+                Form1 loginDialog = new Form1();
+
+                loginDialog.Show();
+
+                this.Close();
             }
         }
     }
