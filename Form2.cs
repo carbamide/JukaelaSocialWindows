@@ -209,5 +209,10 @@ namespace Jukaela_Social
                 this.Close();
             }
         }
+
+        private void refreshFeedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            getFeed();
+        }
     }
 }
